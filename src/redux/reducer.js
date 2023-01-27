@@ -24,7 +24,7 @@ const filterInitialState = '';
 const filterReducer = (state = filterInitialState, action) => {
   switch (action.type) {
     case 'filter/setFilter':
-      return [...state, action.payload];
+      return action.payload;
     default:
       return state;
   }

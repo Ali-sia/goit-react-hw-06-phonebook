@@ -12,7 +12,6 @@ import Title from './Title/index';
 
 export const App = () => {
   const [contacts, setContacts] = useState([]);
-  const [filter, setFilter] = useState('');
 
   useEffect(() => {
     const parsedContacts = JSON.parse(localStorage.getItem('contacts'));
@@ -43,16 +42,16 @@ export const App = () => {
     }
   };
 
-  const changeFilter = e => {
-    setFilter(e.target.value);
-  };
+  // const changeFilter = e => {
+  //   setFilter(e.target.value);
+  // };
 
-  const normalizeFilter = filter.toLowerCase();
-  const filteredContacts = contacts.filter(
-    contact =>
-      contact.name.toLowerCase().includes(normalizeFilter) ||
-      contact.number.includes(normalizeFilter)
-  );
+  // const normalizeFilter = filter.toLowerCase();
+  // const filteredContacts = contacts.filter(
+  //   contact =>
+  //     contact.name.toLowerCase().includes(normalizeFilter) ||
+  //     contact.number.includes(normalizeFilter)
+  // );
 
   return (
     <Box pr={4} pl={4} color="text" width="400px">
@@ -60,14 +59,14 @@ export const App = () => {
       <ContactForm onSubmit={addContact} />
 
       <Title children="Contacts" />
-      <Filter value={filter} onChangeFilter={changeFilter} />
+      <Filter />
 
-      {contacts.length > 0 && (
+      {/* {contacts.length > 0 && (
         <ContactList
           contacts={filteredContacts}
           onDeleteContact={deleteContact}
         />
-      )}
+      )} */}
 
       <GlobalStyle />
     </Box>
