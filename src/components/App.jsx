@@ -11,59 +11,25 @@ import ContactForm from './ContactForm';
 import Title from './Title/index';
 
 export const App = () => {
-  const [contacts, setContacts] = useState([]);
+  // useEffect(() => {
+  //   const parsedContacts = JSON.parse(localStorage.getItem('contacts'));
+  //   if (parsedContacts) {
+  //     setContacts(parsedContacts);
+  //   }
+  // }, []);
 
-  useEffect(() => {
-    const parsedContacts = JSON.parse(localStorage.getItem('contacts'));
-    if (parsedContacts) {
-      setContacts(parsedContacts);
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem('contacts', JSON.stringify(contacts));
-  }, [contacts]);
-
-  // const deleteContact = index => {
-  //   setContacts([...contacts].filter(contact => contact.id !== index));
-  // };
-
-  const addContact = (name, number) => {
-    const newContact = {
-      id: nanoid(),
-      name,
-      number,
-    };
-
-    if (contacts.find(findContact => findContact.name === newContact.name)) {
-      alert(`${newContact.name} is already in contacts`);
-    } else {
-      setContacts([newContact, ...contacts]);
-    }
-  };
-
-  // const changeFilter = e => {
-  //   setFilter(e.target.value);
-  // };
-
-  // const normalizeFilter = filter.toLowerCase();
-  // const filteredContacts = contacts.filter(
-  //   contact =>
-  //     contact.name.toLowerCase().includes(normalizeFilter) ||
-  //     contact.number.includes(normalizeFilter)
-  // );
+  // useEffect(() => {
+  //   localStorage.setItem('contacts', JSON.stringify(contacts));
+  // }, [contacts]);
 
   return (
     <Box pr={4} pl={4} color="text" width="400px">
       <Title children="Add contact" />
-      <ContactForm onSubmit={addContact} />
+      <ContactForm />
 
       <Title children="Contacts" />
       <Filter />
-
-      {/* {contacts.length > 0 && ( */}
       <ContactList />
-      {/* )} */}
 
       <GlobalStyle />
     </Box>
