@@ -9,6 +9,7 @@ export const theme = {
     secondary: '#05a',
     accent: '#2196F3',
     muted: '#f6f6f6',
+    contact_border: '#c7bea7',
   },
   space: [0, 2, 4, 8, 16, 32, 64, 128, 256],
   fonts: {

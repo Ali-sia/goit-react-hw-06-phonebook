@@ -4,6 +4,7 @@ import { getContacts, getFilter } from '../../redux/selectors';
 import PropTypes from 'prop-types';
 
 import Contact from '../Contact/index';
+import { ContactListStyled } from './ContactList.styled';
 
 const ContactList = () => {
   const contacts = useSelector(getContacts);
@@ -17,11 +18,11 @@ const ContactList = () => {
   );
 
   return (
-    <ul>
+    <ContactListStyled>
       {filteredContacts.map(contact => {
         return <Contact key={contact.contactId} contact={contact} />;
       })}
-    </ul>
+    </ContactListStyled>
   );
 };
 
