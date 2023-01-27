@@ -1,9 +1,13 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Box } from '../Box';
 import { EnterLabel, EnterInput, StyledButton } from '../App.styled';
+import { addContact } from 'redux/actions';
 
-const ContactForm = ({ onSubmit }) => {
+const ContactForm = () => {
+  const dispatch = useDispatch();
+
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
@@ -11,10 +15,11 @@ const ContactForm = ({ onSubmit }) => {
   const handleChangeNumber = e => setNumber(e.currentTarget.value);
   const handleSubmit = e => {
     e.preventDefault();
-    onSubmit(name, number);
+    dispatch(addContact({ name, number }));
     setName('');
     setNumber('');
   };
+
   return (
     <Box
       display="flex"
