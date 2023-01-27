@@ -1,11 +1,5 @@
 import styled from 'styled-components';
 
-export const Title = styled.h2`
-  font-family: ${p => p.theme.fonts.heading};
-  margin-bottom: ${p => p.theme.space[3]}px;
-  margin-top: ${p => p.theme.space[3]}px;
-`;
-
 export const EnterLabel = styled.label`
   width: 100%;
   margin-bottom: ${p => p.theme.space[3]}px;

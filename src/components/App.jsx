@@ -4,11 +4,11 @@ import { nanoid } from 'nanoid';
 
 import { GlobalStyle } from './GlobalStyle';
 import { Box } from './Box';
-import { Title } from './App.styled';
 
 import ContactList from './ContactList';
 import Filter from './Filter';
 import CreateContact from './CreateContact';
+import Title from './Title/index';
 
 export const App = () => {
   const [contacts, setContacts] = useState([]);
@@ -56,10 +56,10 @@ export const App = () => {
 
   return (
     <Box pr={4} pl={4} color="text" width="400px">
-      <Title>Add contact</Title>
+      <Title children="Add contact" />
       <CreateContact onSubmit={addContact} />
 
-      <Title>Contacts</Title>
+      <Title children="Contacts" />
       <Filter value={filter} onChangeFilter={changeFilter} />
 
       {contacts.length > 0 && (
