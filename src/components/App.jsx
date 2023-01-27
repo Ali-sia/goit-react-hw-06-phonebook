@@ -24,9 +24,9 @@ export const App = () => {
     localStorage.setItem('contacts', JSON.stringify(contacts));
   }, [contacts]);
 
-  const deleteContact = index => {
-    setContacts([...contacts].filter(contact => contact.id !== index));
-  };
+  // const deleteContact = index => {
+  //   setContacts([...contacts].filter(contact => contact.id !== index));
+  // };
 
   const addContact = (name, number) => {
     const newContact = {
@@ -61,12 +61,9 @@ export const App = () => {
       <Title children="Contacts" />
       <Filter />
 
-      {/* {contacts.length > 0 && (
-        <ContactList
-          contacts={filteredContacts}
-          onDeleteContact={deleteContact}
-        />
-      )} */}
+      {/* {contacts.length > 0 && ( */}
+      <ContactList />
+      {/* )} */}
 
       <GlobalStyle />
     </Box>
