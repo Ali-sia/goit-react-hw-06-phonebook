@@ -7,7 +7,7 @@ import { Box } from './Box';
 
 import ContactList from './ContactList';
 import Filter from './Filter';
-import CreateContact from './CreateContact';
+import ContactForm from './ContactForm';
 import Title from './Title/index';
 
 export const App = () => {
@@ -57,7 +57,7 @@ export const App = () => {
   return (
     <Box pr={4} pl={4} color="text" width="400px">
       <Title children="Add contact" />
-      <CreateContact onSubmit={addContact} />
+      <ContactForm onSubmit={addContact} />
 
       <Title children="Contacts" />
       <Filter value={filter} onChangeFilter={changeFilter} />

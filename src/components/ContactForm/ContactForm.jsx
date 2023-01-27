@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Box } from '../Box';
 import { EnterLabel, EnterInput, StyledButton } from '../App.styled';
 
-const CreateContact = ({ onSubmit }) => {
+const ContactForm = ({ onSubmit }) => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
@@ -53,9 +53,9 @@ const CreateContact = ({ onSubmit }) => {
   );
 };
 
-CreateContact.propTypes = {
+ContactForm.propTypes = {
   name: PropTypes.string,
   number: PropTypes.string,
 };
 
-export default CreateContact;
+export default ContactForm;

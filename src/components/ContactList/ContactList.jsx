@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-import Contact from './Contact/index';
+import Contact from '../Contact/index';
 
 const ContactList = ({ contacts, onDeleteContact }) => {
   return (
