@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { nanoid } from 'nanoid';
 
 import { GlobalStyle } from './GlobalStyle';
 import { Box } from './Box';
@@ -11,17 +9,6 @@ import ContactForm from './ContactForm';
 import Title from './Title/index';
 
 export const App = () => {
-  // useEffect(() => {
-  //   const parsedContacts = JSON.parse(localStorage.getItem('contacts'));
-  //   if (parsedContacts) {
-  //     setContacts(parsedContacts);
-  //   }
-  // }, []);
-
-  // useEffect(() => {
-  //   localStorage.setItem('contacts', JSON.stringify(contacts));
-  // }, [contacts]);
-
   return (
     <Box pr={4} pl={4} color="text" width="400px">
       <Title children="Add contact" />

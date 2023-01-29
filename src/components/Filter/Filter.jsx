@@ -1,7 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { getFilter } from '../../redux/selectors';
-import { setFilter } from '../../redux/actions';
-import PropTypes from 'prop-types';
+import { getFilter, setFilter } from '../../redux/slice';
+// import PropTypes from 'prop-types';
 import { EnterLabel, EnterInput } from '../App.styled';
 
 const Filter = () => {
@@ -23,8 +22,3 @@ const Filter = () => {
 };
 
 export default Filter;
-
-Filter.propTypes = {
-  filtrValueid: PropTypes.string,
-  onChangeFilter: PropTypes.func.isRequired,
-};

@@ -3,7 +3,8 @@ import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Box } from '../Box';
 import { EnterLabel, EnterInput, StyledButton } from '../App.styled';
-import { addContact } from 'redux/actions';
+import { addContact } from 'redux/slice';
+import { nanoid } from '../../../node_modules/nanoid/index';
 
 const ContactForm = () => {
   const dispatch = useDispatch();
@@ -15,7 +16,13 @@ const ContactForm = () => {
   const handleChangeNumber = e => setNumber(e.currentTarget.value);
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch(addContact({ name, number }));
+
+    const newContact = {
+      contactId: nanoid(),
+      name,
+      number,
+    };
+    dispatch(addContact(newContact));
     setName('');
     setNumber('');
   };

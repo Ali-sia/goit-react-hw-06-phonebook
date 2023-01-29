@@ -1,6 +1,6 @@
 // import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { deleteContact } from '../../redux/actions';
+import { deleteContact } from '../../redux/slice';
 import { StyledButton } from '../App.styled';
 import { ContactItem } from './Contact.styled';
 
@@ -11,7 +11,7 @@ const Contact = ({ contact, onDeleteContact }) => {
   const handleDelete = () => dispatch(deleteContact(contactId));
 
   return (
-    <ContactItem>
+    <ContactItem key={contact.contactId}>
       <p>
         {name}, {number}
       </p>
