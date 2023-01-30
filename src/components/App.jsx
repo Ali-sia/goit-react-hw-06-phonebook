@@ -1,5 +1,8 @@
 import PropTypes from 'prop-types';
 
+import { useSelector, useDispatch } from 'react-redux';
+import { getContacts, addContact } from '../redux/slice';
+
 import { GlobalStyle } from './GlobalStyle';
 import { Box } from './Box';
 
@@ -9,10 +12,21 @@ import ContactForm from './ContactForm';
 import Title from './Title/index';
 
 export const App = () => {
+  const dispatch = useDispatch();
+  const contacts = useSelector(getContacts);
+
+  function addNewContact(newContact) {
+    if (contacts.find(contact => contact.name === newContact.name)) {
+      alert(`${newContact.name} is already in contacts.`);
+    } else {
+      dispatch(addContact(newContact));
+    }
+  }
+
   return (
     <Box pr={4} pl={4} color="text" width="400px">
       <Title children="Add contact" />
-      <ContactForm />
+      <ContactForm onSubmitContact={addNewContact} />
 
       <Title children="Contacts" />
       <Filter />
@@ -33,90 +47,3 @@ App.propTypes = {
   ),
   filter: PropTypes.string,
 };
-// export class App extends Component {
-//   static propTypes = {
-//     contacts: PropTypes.arrayOf(
-//       PropTypes.shape({
-//         id: PropTypes.string.isRequired,
-//         name: PropTypes.string.isRequired,
-//         number: PropTypes.string.isRequired,
-//       })
-//     ),
-//     filter: PropTypes.string,
-//   };
-
-//   state = {
-//     contacts: [],
-//     filter: '',
-//   };
-
-//   componentDidMount() {
-//     const parsedCcontacts = JSON.parse(localStorage.getItem('contacts'));
-//     if (parsedCcontacts) {
-//       this.setState({ contacts: parsedCcontacts });
-//     }
-//   }
-
-//   componentDidUpdate(_, prevState) {
-//     if (this.state.contacts !== prevState.contacts) {
-//       localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
-//     }
-//   }
-
-//   deleteContact = index => {
-//     this.setState(prevState => ({
-//       contacts: prevState.contacts.filter(cont => cont.id !== index),
-//     }));
-//   };
-
-//   addContact = (name, number) => {
-//     const newContact = {
-//       id: nanoid(),
-//       name,
-//       number,
-//     };
-
-//     if (
-//       this.state.contacts.find(
-//         findContact => findContact.name === newContact.name
-//       )
-//     ) {
-//       alert(`${newContact.name} is already in contacts`);
-//     } else {
-//       this.setState(prevState => ({
-//         contacts: [newContact, ...prevState.contacts],
-//       }));
-//     }
-//   };
-
-//   changeFilter = e => {
-//     this.setState({ filter: e.currentTarget.value });
-//   };
-
-//   render() {
-//     const { contacts, filter } = this.state;
-
-//     const normalizeFilter = filter.toLowerCase();
-//     const filteredContacts = contacts.filter(contact => {
-//       return (
-//         contact.name.toLowerCase().includes(normalizeFilter) ||
-//         contact.number.toLowerCase().includes(normalizeFilter)
-//       );
-//     });
-//     return (
-//       <Box pr={4} pl={4} color="text" width="400px">
-//         <Title>Add contact</Title>
-//         <CreateContact onSubmit={this.addContact} />
-
-//         <Title>Contacts</Title>
-//         <Filter value={filter} onChangeFilter={this.changeFilter} />
-//         <ContactList
-//           contacts={filteredContacts}
-//           onDeleteContact={this.deleteContact}
-//         />
-
-//         <GlobalStyle />
-//       </Box>
-//     );
-//   }
-// }

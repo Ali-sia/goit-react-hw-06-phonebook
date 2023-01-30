@@ -1,14 +1,11 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+
 import PropTypes from 'prop-types';
 import { Box } from '../Box';
 import { EnterLabel, EnterInput, StyledButton } from '../App.styled';
-import { addContact } from 'redux/slice';
 import { nanoid } from '../../../node_modules/nanoid/index';
 
-const ContactForm = () => {
-  const dispatch = useDispatch();
-
+const ContactForm = ({ onSubmitContact }) => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
@@ -22,7 +19,7 @@ const ContactForm = () => {
       name,
       number,
     };
-    dispatch(addContact(newContact));
+    onSubmitContact(newContact);
     setName('');
     setNumber('');
   };
